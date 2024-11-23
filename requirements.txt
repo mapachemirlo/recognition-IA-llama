@@ -52,3 +52,6 @@ setuptools>=70.0.0 # Snyk vulnerability fix
 # Add gunicorn and python-dotenv for deployment
 gunicorn>=20.1.0
 python-dotenv>=1.0.0
+
+# Flask ----------------------------------------------------------------------
+Flask>=2.2.0
