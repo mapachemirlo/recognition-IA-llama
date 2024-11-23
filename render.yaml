@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: object-recognition-game
+    env: python
+    plan: free
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn object_recognition_game2:app"
+    envVars:
+      - key: PORT
+        value: "5001"
