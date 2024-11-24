@@ -1,5 +1,87 @@
-<!-- ---------------- V2 -->
 <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detección de Objetos</title>
+    <script>
+        let videoElement = null;
+    
+        // Función para acceder a la cámara y mostrar el video
+        async function startCamera() {
+            try {
+                videoElement = document.getElementById("videoElement");
+                const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+                videoElement.srcObject = stream;
+                videoElement.play();
+                captureFrame();  // Comenzamos a capturar frames
+            } catch (err) {
+                console.error("Error al acceder a la cámara", err);
+            }
+        }
+    
+        // Función para capturar un frame y enviarlo al servidor
+        function captureFrame() {
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = videoElement.videoWidth;
+            canvas.height = videoElement.videoHeight;
+            ctx.drawImage(videoElement, 0, 0, canvas.width, canvas.height);
+    
+            const imageData = canvas.toDataURL('image/jpeg');
+    
+            // Enviar la imagen al servidor para procesarla
+            fetch('/video_feed', {
+                method: 'POST',
+                body: new URLSearchParams({ 'image': imageData })
+            })
+            .then(response => response.json())
+            .then(data => {
+                const imgElement = document.getElementById("processedImage");
+                imgElement.src = data.image;
+                fetchHistory();  // Actualizamos el historial después de cada frame procesado
+            })
+            .catch(error => console.error('Error al enviar la imagen:', error));
+    
+            // Capturar un nuevo frame cada 100ms (10 FPS)
+            setTimeout(captureFrame, 100);
+        }
+
+        // Función para obtener la lista de descripciones de objetos encontrados
+        function fetchHistory() {
+            fetch('/describe_object')
+                .then(response => response.json())
+                .then(data => {
+                    const historyContainer = document.getElementById("object-history");
+                    historyContainer.innerHTML = '';  // Limpiar el contenedor antes de agregar los nuevos elementos
+                    data.history.forEach(item => {
+                        const listItem = document.createElement("li");
+                        listItem.textContent = `${item.object}: ${item.description}`;
+                        historyContainer.appendChild(listItem);
+                    });
+                })
+                .catch(error => console.error('Error fetching history:', error));
+        }
+
+        // Iniciar la cámara al cargar la página
+        window.onload = startCamera;
+    </script>
+</head>
+<body>
+    <h1>Detección de Objetos en Tiempo Real</h1>
+    <video id="videoElement" width="800" height="600" style="display: none;" autoplay></video>
+    <h3>Imagen procesada con detección:</h3>
+    <img id="processedImage" width="800" />
+    <h3>Historial de objetos detectados:</h3>
+    <ul id="object-history">
+        <!-- El historial de objetos detectados se actualizará aquí -->
+    </ul>
+</body>
+</html>
+
+
+<!-- ---------------- V2 -->
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -36,7 +118,7 @@
         {% endfor %}
     </ul>
 </body>
-</html>
+</html> -->
 
 
 
@@ -71,3 +153,6 @@
     <p id="object-description">Esperando objeto...</p>
 </body>
 </html> -->
+
+
+

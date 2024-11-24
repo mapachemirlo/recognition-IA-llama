@@ -72,7 +72,7 @@ def describe_object():
 if __name__ == '__main__':
     ##app.run(debug=True)  solo para modo debugger
     import os
-    PORT = os.getenv('PORT', 5001)  # Por defecto, usará el puerto 5001
+    PORT = os.getenv('PORT', 5000)  # Por defecto, usará el puerto 5001
     app.run(host='0.0.0.0', port=int(PORT))
 
 
