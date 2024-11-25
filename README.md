@@ -21,8 +21,6 @@ Carpi IA es una solución diseñada para agilizar y simplificar la integración 
 
 ## <div align="center">Instalación</div>
 
-See the [YOLOv5 Docs](https://docs.ultralytics.com/yolov5/) for full documentation on training, testing and deployment. See below for quickstart examples.
-
 <details open>
 <summary>Install</summary>
 
