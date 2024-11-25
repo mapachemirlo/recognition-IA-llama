@@ -87,5 +87,5 @@ def describe_object():
 
 if __name__ == '__main__':
     import os
-    PORT = os.getenv('PORT', 5000)
+    PORT = os.getenv('PORT', 10000)
     app.run(host='0.0.0.0', port=int(PORT))
