@@ -1,6 +1,6 @@
 <div align="center">
   <p>
-    <a href="https://www.ultralytics.com/events/yolovision" target="_blank">
+    <a href="" target="_blank">
       <img width="100%" src="image.png"></a>
   </p>
 
@@ -32,14 +32,5 @@ cd carpi-ia
 pip install -r requirements.txt  # install
 ```
 
-
-
-<details open>
-<summary>Tutorials</summary>
-
-- [Train Custom Data](https://docs.ultralytics.com/yolov5/tutorials/train_custom_data/) 🚀 RECOMMENDED
-
-
-</details>
 
 
