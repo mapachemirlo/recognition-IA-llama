@@ -1,0 +1,1 @@
+web: gunicorn object_recognition_game3:app --bind 0.0.0.0:$PORT
