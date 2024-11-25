@@ -7,7 +7,9 @@ import base64
 from groq_service import get_description_from_groq
 
 # Inicializar YOLOv5
-model = torch.hub.load('ultralytics/yolov5', 'yolov5s', pretrained=True)
+# model = torch.hub.load('ultralytics/yolov5', 'yolov5s', pretrained=True)
+model = torch.hub.load('ultralytics/yolov5', 'yolov5n', pretrained=True)
+
 
 # Inicializar Flask
 app = Flask(__name__)
@@ -86,5 +88,5 @@ def describe_object():
 
 if __name__ == '__main__':
     import os
-    PORT = os.getenv('PORT', 10000)
+    PORT = os.getenv('PORT', 5000)
     app.run(host='0.0.0.0', port=int(PORT))
