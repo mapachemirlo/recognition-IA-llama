@@ -1,7 +1,7 @@
 <div align="center">
   <p>
     <a href="https://www.ultralytics.com/events/yolovision" target="_blank">
-      <img width="100%" src="https://raw.githubusercontent.com/ultralytics/assets/main/yolov8/banner-yolov8.png"></a>
+      <img width="100%" src="image.png"></a>
   </p>
 
 
@@ -43,10 +43,3 @@ pip install -r requirements.txt  # install
 </details>
 
 
-## <div align="center">Contact</div>
-
-For YOLOv5 bug reports and feature requests please visit [GitHub Issues](https://github.com/ultralytics/yolov5/issues), and join our [Discord](https://discord.com/invite/ultralytics) community for questions and discussions!
-
-
-
-[tta]: https://docs.ultralytics.com/yolov5/tutorials/test_time_augmentation
