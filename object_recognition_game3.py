@@ -6,7 +6,7 @@ import numpy as np
 import base64
 from groq_service import get_description_from_groq
 
-# Inicializar YOLOv5
+# Inicializar YOLOv5 !
 model = torch.hub.load('ultralytics/yolov5', 'yolov5s', pretrained=True)
 
 
